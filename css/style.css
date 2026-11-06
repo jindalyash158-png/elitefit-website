@@ -1,35 +1,42 @@
-/* ELITEFIT - LUXURY DESIGN SYSTEM */
+
+/* =========================================
+   ELITEFIT STUDIO — LUXURY DESIGN SYSTEM
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root {
     --bg-main: #090909;
-    --bg-secondary: #141414;
-    --bg-card: #1b1b1b;
-
-    --gold: #D4AF37;
-    --gold-light: #F1D77A;
-
-    --text-main: #ffffff;
-    --text-muted: #a5a5a5;
-
-    --border: rgba(212, 175, 55, 0.25);
+    --bg-secondary: #111111;
+    --bg-card: #181818;
+    --gold: #c9a45c;
+    --gold-light: #e6c783;
+    --text-main: #f5f2eb;
+    --text-muted: #aaa69d;
+    --border: rgba(201,164,92,0.22);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
 }
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
-    margin: 0;
     background: var(--bg-main);
     color: var(--text-main);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
 a {
@@ -37,10 +44,14 @@ a {
     text-decoration: none;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+}
+
 button,
 input,
-textarea,
-select {
+textarea {
     font: inherit;
 }
 
@@ -48,8 +59,686 @@ button {
     cursor: pointer;
 }
 
-img {
+.container {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+}
+
+/* TYPOGRAPHY */
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+.section-title {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-weight: 600;
+}
+
+.section-title::after {
+    content: "";
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 65px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto 0;
+}
+
+/* HEADER */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(9,9,9,0.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--gold-light);
+}
+
+.cta-header,
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold);
+    color: #111;
+    padding: 13px 27px;
+    font-weight: 700;
+    border: 1px solid var(--gold);
+    transition: 0.3s ease;
+}
+
+.cta-header:hover,
+.btn-primary:hover {
+    background: transparent;
+    color: var(--gold-light);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+}
+
+.menu-toggle span {
+    width: 26px;
+    height: 2px;
+    background: var(--gold-light);
+}
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,0.92), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800')
+        center/cover no-repeat;
+    padding: 130px 0 80px;
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 25px;
+    color: var(--text-main);
+    animation: fadeInUp 1s ease;
+}
+
+.hero-content p {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 27px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: #111;
+}
+
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
+
+section {
+    padding: 100px 0;
+}
+
+.plans,
+.testimonials,
+.trainer {
+    background: var(--bg-secondary);
+}
+
+.training,
+.transformations,
+.contact {
+    background: var(--bg-main);
+}
+
+/* =========================================
+   MEMBERSHIP PLANS
+========================================= */
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.plan-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 40px 28px;
+    text-align: center;
+    position: relative;
+    transition: 0.35s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.plan-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--gold);
+    color: #111;
+    padding: 6px 13px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.plan-price {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--gold-light);
+    margin: 20px 0;
+}
+
+.plan-price span {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.plan-card h3 {
+    font-size: 1.6rem;
+}
+
+.plan-features {
+    list-style: none;
+    margin: 25px 0;
+}
+
+.plan-features li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: var(--text-muted);
+}
+
+.plan-features li i {
+    color: var(--gold);
+    margin-right: 10px;
+}
+/* =========================================
+   TRAINING SECTION
+========================================= */
+
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.training-card {
+    text-align: center;
+    padding: 25px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
+}
+
+.training-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+}
+
+.training-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+.training-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.training-card p {
+    color: var(--text-muted);
+}
+
+/* =========================================
+   TESTIMONIALS
+========================================= */
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.testimonial {
+    background: var(--bg-card);
+    padding: 35px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.testimonial p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin: 18px 0;
+}
+
+.testimonial h4 {
+    color: var(--gold-light);
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: var(--gold);
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   TRANSFORMATION GALLERY
+========================================= */
+
+.transformations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.transformation-card {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.transformation-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.transformation-card:hover img {
+    transform: scale(1.08);
+}
+
+.transformation-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,0.9)
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.transformation-card:hover .transformation-overlay {
+    opacity: 1;
+}
+
+.transformation-overlay h3 {
+    color: var(--gold-light);
+    font-size: 1.5rem;
+}
+
+.transformation-overlay p {
+    color: #ddd;
+}
+
+/* =========================================
+   TRAINER PROFILE
+========================================= */
+
+.trainer {
+    text-align: center;
+}
+
+.trainer-image {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 30px;
+    border: 3px solid var(--gold);
+    padding: 7px;
+}
+
+.trainer p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.contact-form {
+    background: var(--bg-card);
+    padding: 35px;
+    border: 1px solid var(--border);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px;
+    background: #101010;
+    border: 1px solid rgba(201,164,92,0.25);
+    color: var(--text-main);
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    cursor: pointer;
+}
+
+/* =========================================
+   WHATSAPP BUTTON
+========================================= */
+
+.whatsapp-btn {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    z-index: 999;
+    box-shadow: 0 5px 25px rgba(37,211,102,0.25);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: #050505;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 35px 0;
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+        }
+/* =========================================
+   TABLET RESPONSIVENESS
+========================================= */
+
+@media (max-width: 950px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .plans-grid,
+    .training-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 768px) {
+    section {
+        padding: 75px 0;
+    }
+
+    header {
+        padding: 14px 0;
+    }
+
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .cta-header {
+        display: none;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: #090909;
+        border-bottom: 1px solid var(--border);
+        padding: 15px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 13px;
+    }
+
+    .hero {
+        min-height: 90vh;
+        padding: 120px 0 70px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons a {
+        width: 220px;
+    }
+
+    .plans-grid,
+    .training-grid,
+    .testimonials-grid,
+    .transformations-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-card {
+        padding: 35px 22px;
+    }
+
+    .transformation-card {
+        height: 330px;
+    }
+
+    .transformation-overlay {
+        opacity: 1;
+    }
+
+    .trainer-image {
+        width: 210px;
+        height: 210px;
+    }
+
+    .contact-form {
+        padding: 22px;
+    }
+
+    .section-title {
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 400px) {
+    .container {
+        width: 92%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .plan-price {
+        font-size: 2.8rem;
+    }
+
+    .whatsapp-btn {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: 16px;
+    }
 }
